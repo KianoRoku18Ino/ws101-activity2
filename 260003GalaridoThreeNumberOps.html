@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three-Number Operations — WS101 Activity 2</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="260003GalaridoActivity2Style.css">
+</head>
+<body>
+
+  <button type="button" id="musicToggle" class="music-toggle" aria-pressed="false">
+    <span class="music-icon">🔈</span><span class="music-label">Music</span>
+  </button>
+  <audio id="bgMusic" src="assets/audio/background-music.mp3" loop preload="none"></audio>
+
+  <header class="letterhead">
+    <img src="assets/images/qcu-seal.webp" alt="Quezon City University seal">
+    <div class="title">
+      <h1>Quezon City University</h1>
+      <p>College of Computer Studies</p>
+      <p class="activity-name">WS 101 Activity 2</p>
+    </div>
+    <img src="assets/images/ccs-seal.jpg" alt="College of Computer Studies seal">
+  </header>
+
+  <header class="page-header">
+    <h2>Karl Ian Galarido — 26-0003</h2>
+    <p>JavaScript Fundamentals &amp; a Simple Calculator</p>
+  </header>
+
+  <nav class="site-nav" aria-label="Activity pages">
+    <a href="index.html">Home</a>
+    <a href="260003GalaridoThreeNumberOps.html" class="current" aria-current="page">Three-Number Ops</a>
+    <a href="260003GalaridoOddEven.html">Odd / Even</a>
+    <a href="260003GalaridoGradeEquivalent.html">Grade Lookup</a>
+    <a href="260003GalaridoCalculator.html">Calculator</a>
+  </nav>
+
+  <main>
+    <section class="task-card" aria-labelledby="ops-heading">
+      <h2 id="ops-heading">Three-Number Operations</h2>
+      <p class="goal">Goal: practice sum, product, quotient, and remainder across three inputs instead of the usual two.</p>
+
+      <div class="field">
+        <label for="opsInputA">First number</label>
+        <input type="number" id="opsInputA" step="any">
+      </div>
+      <div class="field">
+        <label for="opsInputB">Second number</label>
+        <input type="number" id="opsInputB" step="any">
+      </div>
+      <div class="field">
+        <label for="opsInputC">Third number</label>
+        <input type="number" id="opsInputC" step="any">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="opsBtn">Compute</button>
+      </div>
+
+      <div class="result" id="opsResult" aria-live="polite"></div>
+
+      <p class="assumption">
+        Quotient and remainder only have a standard meaning for two numbers, so this
+        chains left to right: quotient = (a ÷ b) ÷ c, remainder = (a % b) % c.
+      </p>
+
+      <details class="how-it-works">
+        <summary>Show the code &amp; how it works</summary>
+        <p class="logic-note">
+          Reads the three numbers, then runs each operator across all three in turn.
+          Sum and product are unambiguous (a+b+c, a×b×c); quotient and remainder are
+          chained left to right, matching the note above.
+        </p>
+        <pre class="codeblock">function computeThreeNumberOps(a, b, c) {
+  const sum = a + b + c;
+  const product = a * b * c;
+  const quotient = a / b / c;    // (a / b) / c
+  const remainder = (a % b) % c; // (a % b) % c
+  return { sum, product, quotient, remainder };
+}</pre>
+      </details>
+    </section>
+  </main>
+
+  <footer>Compiled by KianoRoku18Ino</footer>
+
+  <script src="common.js"></script>
+  <script src="260003GalaridoThreeNumberOps.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WS101 Activity 2 — Karl Ian Galarido</title>
+  <title>Grade Equivalent Lookup — WS101 Activity 2</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,10 +33,10 @@
   </header>
 
   <nav class="site-nav" aria-label="Activity pages">
-    <a href="index.html" class="current" aria-current="page">Home</a>
+    <a href="index.html">Home</a>
     <a href="260003GalaridoThreeNumberOps.html">Three-Number Ops</a>
     <a href="260003GalaridoOddEven.html">Odd / Even</a>
-    <a href="260003GalaridoGradeEquivalent.html">Grade Lookup</a>
+    <a href="260003GalaridoGradeEquivalent.html" class="current" aria-current="page">Grade Lookup</a>
     <a href="260003GalaridoCalculator.html">Calculator</a>
   </nav>
 
@@ -44,7 +44,7 @@
 
     <section class="reference-card" aria-labelledby="reference-heading">
       <h2 id="reference-heading">Reference — Grading Scale</h2>
-      <p class="goal">Transcribed exactly as provided in the activity brief. The Grade Lookup page is built directly on this table.</p>
+      <p class="goal">Transcribed exactly as provided in the activity brief. The lookup below is built directly on this table.</p>
 
       <table class="reference-table">
         <thead>
@@ -71,29 +71,53 @@
       </table>
     </section>
 
-    <div class="link-grid">
-      <a class="link-card" href="260003GalaridoThreeNumberOps.html">
-        <h3>Three-Number Operations</h3>
-        <p>Sum, product, quotient, and remainder of three input numbers.</p>
-      </a>
-      <a class="link-card" href="260003GalaridoOddEven.html">
-        <h3>Odd or Even Checker</h3>
-        <p>Classifies a whole number using the modulo operator.</p>
-      </a>
-      <a class="link-card" href="260003GalaridoGradeEquivalent.html">
-        <h3>Grade Equivalent Lookup</h3>
-        <p>Matches a percentage score against the table above.</p>
-      </a>
-      <a class="link-card" href="260003GalaridoCalculator.html">
-        <h3>Simple Calculator</h3>
-        <p>Add, subtract, multiply, or divide two numbers.</p>
-      </a>
-    </div>
+    <section class="task-card" aria-labelledby="grade-heading">
+      <h2 id="grade-heading">Grade Equivalent Lookup</h2>
+      <p class="goal">Goal: match a percentage score against the table above and return its grade, rating, and remarks.</p>
+
+      <div class="field">
+        <label for="gradeInput">Final percentage score (0–100)</label>
+        <input type="number" id="gradeInput" min="0" max="100" step="0.01">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="gradeBtn">Get Grade</button>
+      </div>
+
+      <div class="result" id="gradeResult" aria-live="polite"></div>
+
+      <p class="assumption">
+        The reference table's "Passing level: INC — Incomplete — Conditional" row covers
+        a missing score rather than a percentage band, so it isn't reachable from this
+        lookup — it's still shown above because the table is transcribed as provided.
+      </p>
+
+      <details class="how-it-works">
+        <summary>Show the code &amp; how it works</summary>
+        <p class="logic-note">
+          The table above lives in code as an array, ordered highest score-band first.
+          <code>Array.find()</code> walks it top to bottom and stops at the first row
+          the score still qualifies for — since the array is sorted, that's always the
+          correct band.
+        </p>
+        <pre class="codeblock">const GRADE_TABLE = [
+  { min: 96.50, grade: 1.00, rating: "Excellent", remarks: "Passed" },
+  { min: 92.50, grade: 1.25, rating: "Very Good", remarks: "Passed" },
+  // ...the rest of the table, same order as above...
+  { min: -Infinity, grade: 5.00, rating: "Poor", remarks: "Failed" },
+];
+
+function getGradeEquivalent(score) {
+  return GRADE_TABLE.find((row) => score >= row.min);
+}</pre>
+      </details>
+    </section>
 
   </main>
 
   <footer>Compiled by KianoRoku18Ino</footer>
 
   <script src="common.js"></script>
+  <script src="260003GalaridoGradeEquivalent.js"></script>
 </body>
 </html>

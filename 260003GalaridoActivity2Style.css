@@ -1,0 +1,448 @@
+/* ============================================================
+   260003GalaridoActivity2.css
+   WS101 Activity 2 — JavaScript Fundamentals + Simple Calculator
+   Card interiors match the "Simple Calculator" mockup from the brief
+   (light background, green actions) — the letterhead and accents
+   around them use QCU's own navy/gold/red, the same institutional
+   palette as the activity brief's letterhead and the portfolio site,
+   applied fresh to this page's own layout rather than copied from it.
+   ============================================================ */
+
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --qcu-navy: #0038a8;
+  --qcu-gold: #fcd116;
+  --qcu-red: #ce1126;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f1f5f9;
+  color: #1e293b;
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.6;
+  padding: 40px 20px 80px;
+}
+
+/* ===== LETTERHEAD =====
+   Mirrors the activity brief's own header — seal, university name,
+   activity title — rather than the personal-portfolio badge strip. */
+.letterhead {
+  max-width: 720px;
+  margin: 0 auto 20px;
+  background: var(--qcu-navy);
+  color: #ffffff;
+  border-radius: 12px;
+  border-bottom: 4px solid var(--qcu-gold);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.letterhead img {
+  height: 52px;
+  width: 52px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.letterhead .title {
+  text-align: center;
+}
+
+.letterhead .title h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+.letterhead .title p {
+  margin: 2px 0 0;
+  font-size: 0.7rem;
+  color: var(--qcu-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.letterhead .title .activity-name {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.page-header h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--qcu-navy);
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ===== TASK CARD =====
+   Every task (1a, 1b, 1c, and the calculator) is one of these —
+   same shell, different content, so the page reads as one system. */
+.task-card {
+  max-width: 480px;
+  margin: 0 auto 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  border-top: 3px solid var(--qcu-gold);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  padding: 28px 32px;
+}
+
+.task-card h2 {
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+  text-align: center;
+  color: var(--qcu-navy);
+}
+
+/* One-line purpose statement under each task heading — replaces the raw
+   "1a."/"5 pts" labeling with what the task is actually practicing. */
+.task-card .goal {
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #64748b;
+  margin: 0 0 18px;
+}
+
+/* ===== FORM FIELDS ===== */
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.field input[type="number"],
+.field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #f8fafc;
+}
+
+.field input[type="number"]:focus,
+.field select:focus {
+  outline: none;
+  border-color: #16a34a;
+  background: #ffffff;
+}
+
+/* ===== BUTTONS =====
+   Green matches the "Calculate"/"Reset" buttons in the brief's mockup. */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 18px 0 4px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #15803d;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+/* ===== RESULT DISPLAY =====
+   aria-live so screen readers announce a new result without a page reload. */
+.result {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  color: #166534;
+  min-height: 20px;
+  white-space: pre-line;
+}
+
+.result:empty::before {
+  content: "Result appears here.";
+  color: #94a3b8;
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+}
+
+/* ===== ASSUMPTION NOTE =====
+   Small print explaining a judgment call made where the brief was
+   ambiguous (e.g. how "remainder/quotient of 3 numbers" chains). */
+.assumption {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  max-width: 480px;
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ===== REFERENCE TABLE =====
+   The grading-scale table transcribed verbatim from the activity brief,
+   shown before any task card so it's clear what the grade-lookup logic
+   is based on. */
+.reference-card {
+  max-width: 640px;
+  margin: 0 auto 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  border-top: 3px solid var(--qcu-navy);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  padding: 24px 28px;
+}
+
+.reference-card h2 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+  text-align: center;
+  color: var(--qcu-navy);
+}
+
+.reference-card .goal {
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #64748b;
+  margin: 0 0 18px;
+}
+
+.reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.reference-table th {
+  background: var(--qcu-navy);
+  color: #ffffff;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.reference-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reference-table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.reference-table tbody tr:last-child td {
+  font-style: italic;
+  color: #64748b;
+}
+
+/* ===== "HOW IT WORKS" CODE WALKTHROUGH =====
+   A collapsible <details> under each task, closed by default — shows
+   the actual function behind that task plus a plain-English note on
+   the logic, without permanently taking up space on the page. */
+.how-it-works {
+  margin-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 12px;
+}
+
+.how-it-works summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--qcu-navy);
+  list-style: none;
+}
+
+.how-it-works summary::-webkit-details-marker {
+  display: none;
+}
+
+.how-it-works summary::before {
+  content: "▸ ";
+}
+
+.how-it-works[open] summary::before {
+  content: "▾ ";
+}
+
+.how-it-works .logic-note {
+  font-size: 0.82rem;
+  color: #475569;
+  margin: 10px 0;
+}
+
+.how-it-works .codeblock {
+  background: #0b1426;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  white-space: pre;
+  margin: 0;
+}
+
+/* ===== MUSIC TOGGLE =====
+   Fixed to the corner, off by default — the audio element has no
+   autoplay attribute, so nothing plays until this is clicked. */
+.music-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--qcu-navy);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.music-toggle:hover {
+  background: #002a80;
+}
+
+.music-toggle .music-icon {
+  font-size: 0.95rem;
+}
+
+/* ===== SITE NAV =====
+   Same nav bar duplicated at the top of every page — this is a static
+   multi-page site with no shared server-side include, so each page
+   carries its own copy and marks its own link "current." */
+.site-nav {
+  max-width: 640px;
+  margin: 0 auto 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.site-nav a:hover {
+  background: #f1f5f9;
+}
+
+.site-nav a.current {
+  background: var(--qcu-navy);
+  color: #ffffff;
+}
+
+/* ===== HUB LINK CARDS =====
+   index.html's four task links — separate files now, so the hub page
+   is what ties them together instead of one long scroll. */
+.link-grid {
+  max-width: 640px;
+  margin: 0 auto 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.link-card {
+  display: block;
+  background: #ffffff;
+  border-radius: 12px;
+  border-top: 3px solid var(--qcu-gold);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.link-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: var(--qcu-navy);
+}
+
+.link-card p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #64748b;
+}
