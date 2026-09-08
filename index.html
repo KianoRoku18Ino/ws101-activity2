@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WS101 Activity 2 — Karl Ian Galarido</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="letterhead">
+    <img src="assets/images/qcu-seal.webp" alt="Quezon City University seal">
+    <div class="title">
+      <h1>Quezon City University</h1>
+      <p>College of Computer Studies</p>
+      <p class="activity-name">WS 101 Activity 2</p>
+    </div>
+    <img src="assets/images/ccs-seal.jpg" alt="College of Computer Studies seal">
+  </header>
+
+  <header class="page-header">
+    <h2>Karl Ian Galarido — 26-0003</h2>
+    <p>JavaScript Fundamentals &amp; a Simple Calculator</p>
+  </header>
+
+  <main>
+
+    <!-- ===================== TASK 1A ===================== -->
+    <section class="task-card" aria-labelledby="ops-heading">
+      <h2 id="ops-heading">1a. Sum, Product, Quotient, Remainder</h2>
+      <span class="task-points">5 pts</span>
+
+      <div class="field">
+        <label for="opsInputA">First number</label>
+        <input type="number" id="opsInputA" step="any">
+      </div>
+      <div class="field">
+        <label for="opsInputB">Second number</label>
+        <input type="number" id="opsInputB" step="any">
+      </div>
+      <div class="field">
+        <label for="opsInputC">Third number</label>
+        <input type="number" id="opsInputC" step="any">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="opsBtn">Compute</button>
+      </div>
+
+      <div class="result" id="opsResult" aria-live="polite"></div>
+
+      <p class="assumption">
+        Quotient and remainder only have a standard meaning for two numbers, so this
+        chains left to right: quotient = (a ÷ b) ÷ c, remainder = (a % b) % c.
+      </p>
+    </section>
+
+    <!-- ===================== TASK 1B ===================== -->
+    <section class="task-card" aria-labelledby="oddeven-heading">
+      <h2 id="oddeven-heading">1b. Odd or Even</h2>
+      <span class="task-points">5 pts</span>
+
+      <div class="field">
+        <label for="oddEvenInput">Number to check</label>
+        <input type="number" id="oddEvenInput" step="1">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="oddEvenBtn">Check</button>
+      </div>
+
+      <div class="result" id="oddEvenResult" aria-live="polite"></div>
+    </section>
+
+    <!-- ===================== TASK 1C ===================== -->
+    <section class="task-card" aria-labelledby="grade-heading">
+      <h2 id="grade-heading">1c. Grade Equivalent</h2>
+      <span class="task-points">10 pts</span>
+
+      <div class="field">
+        <label for="gradeInput">Final percentage score (0–100)</label>
+        <input type="number" id="gradeInput" min="0" max="100" step="0.01">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="gradeBtn">Get Grade</button>
+      </div>
+
+      <div class="result" id="gradeResult" aria-live="polite"></div>
+
+      <p class="assumption">
+        Table transcribed from the activity brief. The brief's "Passing level: INC —
+        Incomplete — Conditional" row covers a missing score rather than a percentage
+        band, so it isn't part of this lookup.
+      </p>
+    </section>
+
+    <!-- ===================== TASK 2 ===================== -->
+    <section class="task-card" aria-labelledby="calc-heading">
+      <h2 id="calc-heading">2. Simple Calculator</h2>
+
+      <div class="field">
+        <label for="calcFirst">Enter first number:</label>
+        <input type="number" id="calcFirst" step="any">
+      </div>
+      <div class="field">
+        <label for="calcSecond">Enter second number:</label>
+        <input type="number" id="calcSecond" step="any">
+      </div>
+      <div class="field">
+        <label for="calcOperator">Choose an operator:</label>
+        <select id="calcOperator">
+          <option value="+">+</option>
+          <option value="-">−</option>
+          <option value="*">×</option>
+          <option value="/">÷</option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="calcBtn">Calculate</button>
+        <button type="button" class="btn-secondary" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="result" id="calcResult" aria-live="polite"></div>
+    </section>
+
+  </main>
+
+  <footer>Compiled by KianoRoku18Ino</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
