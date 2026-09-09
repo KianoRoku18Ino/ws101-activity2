@@ -274,8 +274,19 @@ footer {
 
 .reference-table {
   width: 100%;
+  min-width: 520px;
   border-collapse: collapse;
   font-size: 0.82rem;
+}
+
+/* Table is wider than a phone screen can show at readable font size —
+   this wrapper scrolls horizontally within the card's own border,
+   instead of the table overflowing past it. */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
 }
 
 .reference-table th {
@@ -445,4 +456,42 @@ footer {
   margin: 0;
   font-size: 0.82rem;
   color: #64748b;
+}
+
+/* ===== NARROW-SCREEN ADJUSTMENTS =====
+   Phone portrait widths (~360-430px) — tighter padding so more of the
+   reference table is visible before the scroll wrapper above kicks in. */
+@media (max-width: 480px) {
+  body {
+    padding: 24px 12px 60px;
+  }
+
+  .reference-card,
+  .task-card {
+    padding: 20px 16px;
+  }
+
+  .letterhead {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .letterhead img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .letterhead .title h1 {
+    font-size: 0.9rem;
+  }
+
+  .site-nav {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .site-nav a {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
 }
