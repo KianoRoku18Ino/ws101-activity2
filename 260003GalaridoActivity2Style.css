@@ -1,22 +1,39 @@
 /* ============================================================
-   260003GalaridoActivity2.css
+   260003GalaridoActivity2Style.css
    WS101 Activity 2 — JavaScript Fundamentals + Simple Calculator
-   Card interiors match the "Simple Calculator" mockup from the brief
-   (light background, green actions) — the letterhead and accents
-   around them use QCU's own navy/gold/red, the same institutional
-   palette as the activity brief's letterhead and the portfolio site,
-   applied fresh to this page's own layout rather than copied from it.
+   Karl Ian Ranay Galarido | BSIT-1D | Quezon City University
+
+   One shared stylesheet for all five pages (the hub and the four task
+   pages), so I only have one file to edit when I want to change how
+   the whole submission looks. Each page's own HTML only adds the
+   content that's actually unique to it.
+
+   The card interiors match the "Simple Calculator" mockup from the
+   brief on purpose — light background, green action buttons. The
+   letterhead and accents around them use QCU's own navy/gold/red,
+   the same colors as the activity brief's own header and my portfolio
+   site, but I built this layout fresh instead of copying the
+   portfolio's CSS wholesale, since a form-heavy tool page and a
+   personal bio page aren't the same kind of layout.
    ============================================================ */
 
-/* ===== DESIGN TOKENS ===== */
+/* 1. DESIGN TOKENS
+   Keeping the QCU colors here in one place, the same idea as I used
+   in my portfolio's --red/--navy/--gold variables — if I ever want to
+   adjust the exact shade, I only change it once instead of hunting
+   through every rule below. */
 :root {
   --qcu-navy: #0038a8;
   --qcu-gold: #fcd116;
   --qcu-red: #ce1126;
 }
 
-/* ===== RESET & BASE ===== */
+/* 2. RESET & BASE */
 * {
+  /* padding and border count INSIDE an element's declared width
+     instead of adding to it — without this, my input fields and
+     cards would keep overflowing their own containers every time I
+     added padding or a border. */
   box-sizing: border-box;
 }
 
@@ -29,16 +46,19 @@ body {
   padding: 40px 20px 80px;
 }
 
-/* ===== LETTERHEAD =====
-   Mirrors the activity brief's own header — seal, university name,
-   activity title — rather than the personal-portfolio badge strip. */
+/* 3. LETTERHEAD
+   This is my stand-in for the QCU letterhead at the top of the actual
+   brief PDF — seal, university name, "College of Computer Studies,"
+   activity title — instead of the personal badge strip I used on my
+   portfolio. It's the same seal images, just used for a different
+   purpose here: identifying the document, not identifying me. */
 .letterhead {
   max-width: 720px;
   margin: 0 auto 20px;
   background: var(--qcu-navy);
   color: #ffffff;
   border-radius: 12px;
-  border-bottom: 4px solid var(--qcu-gold);
+  border-bottom: 4px solid var(--qcu-gold); /* the gold line is my one QCU-palette accent that isn't navy */
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -49,11 +69,11 @@ body {
 .letterhead img {
   height: 52px;
   width: 52px;
-  object-fit: contain;
-  background: #ffffff;
+  object-fit: contain; /* keeps the seal's own aspect ratio instead of squishing it into a square */
+  background: #ffffff; /* both seal files have white space around the crest, so a white circle behind them reads cleanly on the navy */
   border-radius: 50%;
   padding: 4px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* stops the seals from getting squeezed if the title text ever wraps to two lines */
 }
 
 .letterhead .title {
@@ -83,7 +103,10 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* ===== PAGE HEADER ===== */
+/* 4. PAGE HEADER
+   My name and student number, plus the activity's one-line
+   description — separate from the letterhead above because that part
+   identifies me specifically, not the institution. */
 .page-header {
   max-width: 720px;
   margin: 0 auto 40px;
@@ -103,15 +126,59 @@ body {
   margin: 0;
 }
 
-/* ===== TASK CARD =====
-   Every task (1a, 1b, 1c, and the calculator) is one of these —
-   same shell, different content, so the page reads as one system. */
+/* 5. SITE NAV
+   The link bar between my five pages. This is a plain static site with
+   no shared template system, so I can't "include" one nav file on
+   every page — I paste the same five links onto every page by hand,
+   and just change which one has class="current" on that particular
+   page. It's repetitive to write, but it's the honest way to do
+   navigation on a project that's only allowed to be HTML/CSS/JS. */
+.site-nav {
+  max-width: 640px;
+  margin: 0 auto 32px;
+  display: flex;
+  flex-wrap: wrap; /* lets the five links drop to a second row instead of overflowing on a narrow phone */
+  justify-content: center;
+  gap: 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.site-nav a:hover {
+  background: #f1f5f9;
+}
+
+.site-nav a.current {
+  /* this is how I show "you are here" — a plain color swap, no JS
+     needed, since I already know which page each file is when I'm
+     writing it */
+  background: var(--qcu-navy);
+  color: #ffffff;
+}
+
+/* 6. TASK CARD
+   Every task page (three-number ops, odd/even, grade lookup,
+   calculator) wraps its actual tool in one of these. Same shell,
+   different content inside — I wanted flipping between pages to feel
+   like one connected submission, not four unrelated pages that happen
+   to share a font. */
 .task-card {
   max-width: 480px;
   margin: 0 auto 32px;
   background: #ffffff;
   border-radius: 12px;
-  border-top: 3px solid var(--qcu-gold);
+  border-top: 3px solid var(--qcu-gold); /* the gold accent stripe is the same idea on every card, so my eye recognizes "this is a task" at a glance */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
   padding: 28px 32px;
 }
@@ -123,8 +190,10 @@ body {
   color: var(--qcu-navy);
 }
 
-/* One-line purpose statement under each task heading — replaces the raw
-   "1a."/"5 pts" labeling with what the task is actually practicing. */
+/* my one-line "what this is for" statement under each heading — I
+   used to show "1a." and "5 pts" here instead, but that told a reader
+   nothing about what the tool actually does, so I swapped it for a
+   plain-English goal instead. */
 .task-card .goal {
   text-align: center;
   font-size: 0.8rem;
@@ -133,7 +202,9 @@ body {
   margin: 0 0 18px;
 }
 
-/* ===== FORM FIELDS ===== */
+/* 7. FORM FIELDS
+   Every number input and the calculator's dropdown share this look,
+   so I only had to get the focus/border/spacing right once. */
 .field {
   margin-bottom: 16px;
 }
@@ -153,19 +224,22 @@ body {
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 0.95rem;
-  font-family: inherit;
+  font-family: inherit; /* without this, number inputs fall back to the browser's default form-control font instead of matching my body text */
   background: #f8fafc;
 }
 
 .field input[type="number"]:focus,
 .field select:focus {
-  outline: none;
+  outline: none; /* removing the default outline is only safe because I'm replacing it with my own visible focus state below, not deleting it outright */
   border-color: #16a34a;
   background: #ffffff;
 }
 
-/* ===== BUTTONS =====
-   Green matches the "Calculate"/"Reset" buttons in the brief's mockup. */
+/* 8. BUTTONS
+   Green for my primary action on every card, matching the "Calculate"
+   and "Reset" buttons the brief itself showed in its mockup — I kept
+   that color choice instead of switching to my own QCU palette here,
+   since it's directly copying what the instructor asked for. */
 .btn-row {
   display: flex;
   gap: 10px;
@@ -193,6 +267,8 @@ button {
 }
 
 .btn-secondary {
+  /* the Reset button only exists on the calculator, styled quieter on
+     purpose so it doesn't compete with Calculate for attention */
   background: #e2e8f0;
   color: #334155;
 }
@@ -201,31 +277,41 @@ button {
   background: #cbd5e1;
 }
 
-/* ===== RESULT DISPLAY =====
-   aria-live so screen readers announce a new result without a page reload. */
+/* 9. RESULT DISPLAY
+   Where every task writes its answer. aria-live="polite" is set on
+   this element over in the HTML, not here — but it's worth noting
+   next to the CSS that made me the color choice: a screen reader
+   announces whatever lands in this box automatically, without the
+   page reloading or focus jumping anywhere. */
 .result {
   margin-top: 16px;
   padding: 14px 16px;
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
   border-radius: 8px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", monospace; /* monospace so columns of numbers in the three-number-ops result line up evenly */
   font-size: 0.85rem;
   color: #166534;
-  min-height: 20px;
-  white-space: pre-line;
+  min-height: 20px; /* reserves space even before there's a result, so the layout doesn't jump the first time someone clicks a button */
+  white-space: pre-line; /* lets my \n line breaks in the JS result strings actually render as line breaks instead of collapsing to one line */
 }
 
 .result:empty::before {
+  /* a placeholder message that only shows up when the box is
+     genuinely empty — this disappears on its own the moment textContent
+     is set in JS, no extra class-toggling needed on my end */
   content: "Result appears here.";
   color: #94a3b8;
   font-family: "Inter", sans-serif;
   font-style: italic;
 }
 
-/* ===== ASSUMPTION NOTE =====
-   Small print explaining a judgment call made where the brief was
-   ambiguous (e.g. how "remainder/quotient of 3 numbers" chains). */
+/* 10. ASSUMPTION NOTE
+   Small print under a couple of the tasks, explaining a judgment call
+   I made where the brief itself was ambiguous — like how "remainder
+   and quotient of 3 numbers" doesn't have one obvious meaning. I'd
+   rather state my assumption in the open than have a reader guess at
+   my reasoning from the code alone. */
 .assumption {
   font-size: 0.75rem;
   color: #94a3b8;
@@ -234,25 +320,106 @@ button {
   padding-top: 8px;
 }
 
-/* ===== FOOTER ===== */
-footer {
-  max-width: 480px;
-  margin: 40px auto 0;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #94a3b8;
+/* 11. "HOW IT WORKS" CODE WALKTHROUGH
+   A collapsible box under every task — closed by default so it
+   doesn't take up space, but there if someone (my instructor, or
+   future me during defense) wants to see the actual function without
+   opening the .js file separately. */
+.how-it-works {
+  margin-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 12px;
 }
 
-/* ===== REFERENCE TABLE =====
-   The grading-scale table transcribed verbatim from the activity brief,
-   shown before any task card so it's clear what the grade-lookup logic
-   is based on. */
+.how-it-works summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--qcu-navy);
+  list-style: none; /* hides the marker Firefox draws automatically, since I'm drawing my own ▸/▾ below instead */
+}
+
+.how-it-works summary::-webkit-details-marker {
+  /* same idea as list-style: none above, but for the Chrome/Safari
+     disclosure triangle specifically — it needs its own rule because
+     it isn't a normal list marker */
+  display: none;
+}
+
+.how-it-works summary::before {
+  content: "▸ ";
+}
+
+.how-it-works[open] summary::before {
+  /* [open] is an actual HTML attribute the browser adds by itself the
+     moment a reader clicks the summary — I'm not toggling this with
+     any JavaScript, just reacting to it in CSS */
+  content: "▾ ";
+}
+
+.how-it-works .logic-note {
+  font-size: 0.82rem;
+  color: #475569;
+  margin: 10px 0;
+}
+
+.how-it-works .codeblock {
+  /* dark background on purpose, even though the rest of the page is
+     light — it makes the code visually read as "this is a quoted
+     source snippet," the same contrast trick code editors use */
+  background: #0b1426;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto; /* a long line of code scrolls sideways inside its own box instead of forcing the whole page wider */
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  white-space: pre; /* keeps my indentation exactly as written in the string, instead of collapsing it like normal HTML text does */
+  margin: 0;
+}
+
+/* 12. MUSIC TOGGLE
+   Pinned to the same corner on every page. It starts "off" because
+   the <audio> element it controls has no autoplay attribute — nothing
+   plays until a real click happens, which is also what satisfies
+   browsers' autoplay-blocking rules in the first place. */
+.music-toggle {
+  position: fixed; /* stays in the corner even while the page scrolls, instead of scrolling away with the content */
+  top: 16px;
+  right: 16px;
+  z-index: 10; /* keeps it above the letterhead and cards instead of getting tucked behind them */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--qcu-navy);
+  color: #ffffff;
+  border-radius: 999px; /* a large enough radius always renders as a full pill regardless of the button's exact width */
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.music-toggle:hover {
+  background: #002a80;
+}
+
+.music-toggle .music-icon {
+  font-size: 0.95rem;
+}
+
+/* 13. REFERENCE TABLE
+   The grading-scale table, typed in exactly as it appears in the
+   activity brief. It shows up on my hub page and again on the Grade
+   Equivalent page specifically, since that's the one page whose logic
+   is actually built on it — I wanted whoever's checking my work to be
+   able to compare my numbers against the source table without having
+   to go find the original brief again. */
 .reference-card {
   max-width: 640px;
   margin: 0 auto 32px;
   background: #ffffff;
   border-radius: 12px;
-  border-top: 3px solid var(--qcu-navy);
+  border-top: 3px solid var(--qcu-navy); /* navy instead of the task cards' gold, so my eye can tell "reference" apart from "tool" at a glance */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
   padding: 24px 28px;
 }
@@ -274,18 +441,20 @@ footer {
 
 .reference-table {
   width: 100%;
-  min-width: 520px;
+  min-width: 520px; /* stops the columns from getting squeezed unreadable on a narrow screen — the wrapper below is what actually handles the overflow this creates */
   border-collapse: collapse;
   font-size: 0.82rem;
 }
 
-/* Table is wider than a phone screen can show at readable font size —
-   this wrapper scrolls horizontally within the card's own border,
-   instead of the table overflowing past it. */
+/* I found out the hard way that this table is wider than a phone
+   screen can show at a readable font size — on my own phone in
+   portrait mode the Remarks column was spilling past the card's
+   border entirely. This wrapper scrolls sideways INSIDE the card
+   instead, which is the actual fix, not just a smaller font. */
 .table-scroll {
   width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch; /* keeps the sideways scroll feeling smooth/native on an iPhone specifically */
   border-radius: 8px;
 }
 
@@ -302,132 +471,31 @@ footer {
 }
 
 .reference-table tbody tr:nth-child(even) {
+  /* alternating row shading, so it's easy to track one row across
+     four columns without a ruler */
   background: #f8fafc;
 }
 
 .reference-table tbody tr:last-child td {
+  /* the brief's own "Passing level: INC" row is a special case, not a
+     percentage band like the rest — italicizing it is my way of
+     visually flagging that before a reader even gets to my written
+     note about it under the Grade Lookup tool */
   font-style: italic;
   color: #64748b;
 }
 
-/* ===== "HOW IT WORKS" CODE WALKTHROUGH =====
-   A collapsible <details> under each task, closed by default — shows
-   the actual function behind that task plus a plain-English note on
-   the logic, without permanently taking up space on the page. */
-.how-it-works {
-  margin-top: 16px;
-  border-top: 1px dashed #e2e8f0;
-  padding-top: 12px;
-}
-
-.how-it-works summary {
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--qcu-navy);
-  list-style: none;
-}
-
-.how-it-works summary::-webkit-details-marker {
-  display: none;
-}
-
-.how-it-works summary::before {
-  content: "▸ ";
-}
-
-.how-it-works[open] summary::before {
-  content: "▾ ";
-}
-
-.how-it-works .logic-note {
-  font-size: 0.82rem;
-  color: #475569;
-  margin: 10px 0;
-}
-
-.how-it-works .codeblock {
-  background: #0b1426;
-  color: #e2e8f0;
-  border-radius: 8px;
-  padding: 14px 16px;
-  overflow-x: auto;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.78rem;
-  white-space: pre;
-  margin: 0;
-}
-
-/* ===== MUSIC TOGGLE =====
-   Fixed to the corner, off by default — the audio element has no
-   autoplay attribute, so nothing plays until this is clicked. */
-.music-toggle {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--qcu-navy);
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.8rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.music-toggle:hover {
-  background: #002a80;
-}
-
-.music-toggle .music-icon {
-  font-size: 0.95rem;
-}
-
-/* ===== SITE NAV =====
-   Same nav bar duplicated at the top of every page — this is a static
-   multi-page site with no shared server-side include, so each page
-   carries its own copy and marks its own link "current." */
-.site-nav {
-  max-width: 640px;
-  margin: 0 auto 32px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.site-nav a {
-  text-decoration: none;
-  color: #475569;
-  font-size: 0.82rem;
-  font-weight: 500;
-  padding: 8px 14px;
-  border-radius: 6px;
-}
-
-.site-nav a:hover {
-  background: #f1f5f9;
-}
-
-.site-nav a.current {
-  background: var(--qcu-navy);
-  color: #ffffff;
-}
-
-/* ===== HUB LINK CARDS =====
-   index.html's four task links — separate files now, so the hub page
-   is what ties them together instead of one long scroll. */
+/* 14. HUB LINK CARDS
+   Four link-cards on index.html pointing at my four separate task
+   pages. Since the instructor asked for separate files instead of one
+   combined page, index.html stopped being a leftover GitHub-Pages
+   copy of a single file and became an actual hub page connecting all
+   of them — which is a cleaner setup than what I had before anyway. */
 .link-grid {
   max-width: 640px;
   margin: 0 auto 32px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* auto-fit lets this collapse from 2 columns to 1 on a narrow screen with no media query needed */
   gap: 16px;
 }
 
@@ -438,7 +506,7 @@ footer {
   border-top: 3px solid var(--qcu-gold);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
   padding: 20px;
-  text-decoration: none;
+  text-decoration: none; /* the whole card is one big <a>, so I have to manually strip the underline and inherit the text color below */
   color: inherit;
 }
 
@@ -458,9 +526,21 @@ footer {
   color: #64748b;
 }
 
-/* ===== NARROW-SCREEN ADJUSTMENTS =====
-   Phone portrait widths (~360-430px) — tighter padding so more of the
-   reference table is visible before the scroll wrapper above kicks in. */
+/* 15. FOOTER */
+footer {
+  max-width: 480px;
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* 16. NARROW-SCREEN ADJUSTMENTS
+   This is the other half of the mobile-overflow fix from section 13 —
+   on top of the table scrolling inside its own box, I also tighten up
+   the padding around it (and everything else) below 480px, so more of
+   the actual table is visible on a phone screen before anyone even
+   needs to scroll sideways. */
 @media (max-width: 480px) {
   body {
     padding: 24px 12px 60px;

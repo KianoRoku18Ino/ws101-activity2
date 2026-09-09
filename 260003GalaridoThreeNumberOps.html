@@ -1,9 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  260003GalaridoThreeNumberOps.html
+  WS101 Activity 2, Item A — Sum, Product, Quotient, Remainder.
+  Karl Ian Ranay Galarido | BSIT-1D | Quezon City University
+
+  This page only does one thing: take three numbers and run four
+  operations across them. It's item A of the activity, now its own
+  file since the instructor asked for A/B/C separately instead of on
+  one page. The actual math lives in 260003GalaridoThreeNumberOps.js,
+  linked at the bottom — nothing here is inline.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three-Number Operations — WS101 Activity 2</title>
+  <meta name="description" content="Sum, product, quotient, and remainder of three input numbers — WS101 Activity 2, Item A.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,6 +44,8 @@
     <p>JavaScript Fundamentals &amp; a Simple Calculator</p>
   </header>
 
+  <!-- this is the Three-Number Ops page, so that's the link I mark
+     current — same five links as every other page on this site -->
   <nav class="site-nav" aria-label="Activity pages">
     <a href="index.html">Home</a>
     <a href="260003GalaridoThreeNumberOps.html" class="current" aria-current="page">Three-Number Ops</a>
@@ -45,6 +59,7 @@
       <h2 id="ops-heading">Three-Number Operations</h2>
       <p class="goal">Goal: practice sum, product, quotient, and remainder across three inputs instead of the usual two.</p>
 
+      <!-- three plain number fields, one per input the brief asks for -->
       <div class="field">
         <label for="opsInputA">First number</label>
         <input type="number" id="opsInputA" step="any">
@@ -62,13 +77,24 @@
         <button type="button" class="btn-primary" id="opsBtn">Compute</button>
       </div>
 
+      <!-- my JS writes the four results into this empty div — I kept
+         it empty on purpose instead of hardcoding placeholder text
+         here, since my CSS's :empty selector already shows a
+         "Result appears here" message until then -->
       <div class="result" id="opsResult" aria-live="polite"></div>
 
+      <!-- sum and product of three numbers are obvious, but quotient
+         and remainder aren't — division only really means anything
+         for TWO numbers, so I had to decide how to handle a third one
+         myself and I'm stating that choice here instead of hiding it -->
       <p class="assumption">
         Quotient and remainder only have a standard meaning for two numbers, so this
         chains left to right: quotient = (a ÷ b) ÷ c, remainder = (a % b) % c.
       </p>
 
+      <!-- closed by default — this is here so my instructor (or me,
+         during defense) can see the actual function without leaving
+         the page to open the .js file separately -->
       <details class="how-it-works">
         <summary>Show the code &amp; how it works</summary>
         <p class="logic-note">
@@ -89,6 +115,8 @@
 
   <footer>Compiled by KianoRoku18Ino</footer>
 
+  <!-- common.js runs the music button; my own script right after it
+     runs everything specific to this one page -->
   <script src="common.js"></script>
   <script src="260003GalaridoThreeNumberOps.js"></script>
 </body>

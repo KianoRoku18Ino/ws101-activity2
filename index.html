@@ -1,22 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  index.html
+  WS101 Activity 2 — JavaScript Fundamentals & a Simple Calculator.
+  Karl Ian Ranay Galarido | BSIT-1D | Quezon City University
+
+  This is my hub page, not a fifth task. My instructor clarified that
+  items A, B, and C need to be separate files instead of sections on
+  one page, so this file's actual job is just tying those four
+  separate pages together — the reference table up top, then a link
+  out to each task below it.
+
+  I read this page top to bottom the same way it shows on screen:
+  Letterhead -> my name -> nav -> reference table -> the four task links.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- this line tells the browser to use the phone's real screen
+     width instead of showing a zoomed-out desktop view first, same
+     as I used on my portfolio page -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WS101 Activity 2 — Karl Ian Galarido</title>
+  <meta name="description" content="Hub page for Karl Ian Galarido's WS101 Activity 2 — JavaScript fundamentals and a simple calculator, Quezon City University.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+  <!-- linking my one shared stylesheet, same file every page on this
+     site uses -->
   <link rel="stylesheet" href="260003GalaridoActivity2Style.css">
 </head>
 <body>
 
+  <!-- ===== MUSIC TOGGLE — off by default, since I didn't add an
+     autoplay attribute below. Clicking this is what actually starts
+     the track; see common.js for the function that runs on click. ===== -->
   <button type="button" id="musicToggle" class="music-toggle" aria-pressed="false">
     <span class="music-icon">🔈</span><span class="music-label">Music</span>
   </button>
   <audio id="bgMusic" src="assets/audio/background-music.mp3" loop preload="none"></audio>
 
+  <!-- ===== LETTERHEAD — my stand-in for the QCU letterhead at the
+     top of the actual brief PDF: seal, university name, college,
+     activity title, second seal. Same real seal image files I used
+     on my portfolio, just used here to identify the document instead
+     of me. ===== -->
   <header class="letterhead">
     <img src="assets/images/qcu-seal.webp" alt="Quezon City University seal">
     <div class="title">
@@ -27,11 +55,17 @@
     <img src="assets/images/ccs-seal.jpg" alt="College of Computer Studies seal">
   </header>
 
+  <!-- ===== PAGE HEADER — my name and student number, separate from
+     the letterhead above since this part identifies me, not QCU ===== -->
   <header class="page-header">
     <h2>Karl Ian Galarido — 26-0003</h2>
     <p>JavaScript Fundamentals &amp; a Simple Calculator</p>
   </header>
 
+  <!-- ===== SITE NAV — the same five links appear on every page; I
+     mark whichever one matches the current file with class="current"
+     by hand, since a plain static site has no way to detect that on
+     its own. This page is Home, so that's the one marked here. ===== -->
   <nav class="site-nav" aria-label="Activity pages">
     <a href="index.html" class="current" aria-current="page">Home</a>
     <a href="260003GalaridoThreeNumberOps.html">Three-Number Ops</a>
@@ -42,11 +76,25 @@
 
   <main>
 
+    <!-- ===== REFERENCE TABLE — the grading-scale table, typed in
+       exactly as it appears in the activity brief. I put this up
+       front on the hub page (not just on the Grade Lookup page)
+       because I wanted it visible before anyone even opens a task,
+       since it's the source everything in that one task is checked
+       against. ===== -->
     <section class="reference-card" aria-labelledby="reference-heading">
       <h2 id="reference-heading">Reference — Grading Scale</h2>
       <p class="goal">Transcribed exactly as provided in the activity brief. The Grade Lookup page is built directly on this table.</p>
 
+      <!-- I wrap the table in a scrolling div because I found out on
+         my own phone that in portrait mode this table is wider than
+         the screen — the div lets it scroll sideways inside its own
+         card instead of spilling past the border. -->
       <div class="table-scroll">
+        <!-- this IS a real table: score band, grade, rating, and
+           remarks are genuinely four columns of the same data, which
+           is exactly what <table> is for — same reasoning I used for
+           my report-card tables on the portfolio page -->
         <table class="reference-table">
           <thead>
             <tr>
@@ -67,12 +115,22 @@
             <tr><td>68.50% to 72.49%</td><td>2.75</td><td>Fair</td><td>Passed</td></tr>
             <tr><td>64.50% to 68.49%</td><td>3.00</td><td>Fair</td><td>Passed</td></tr>
             <tr><td>Below 64.50%</td><td>5.00</td><td>Poor</td><td>Failed</td></tr>
+            <!-- this last row is a special case, not a percentage
+               band — I left it in because the table should match the
+               brief exactly, but it isn't reachable from my actual
+               grade-lookup logic; I explain why on the Grade Lookup
+               page itself -->
             <tr><td>Passing level</td><td>INC</td><td>Incomplete</td><td>Conditional</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <!-- ===== TASK LINKS — one card per separate page, since that's
+       how the instructor wants A/B/C (and the calculator) submitted
+       now. Each card is one big <a>, not a heading with a link inside
+       it, so the whole card is clickable instead of just the title
+       text. ===== -->
     <div class="link-grid">
       <a class="link-card" href="260003GalaridoThreeNumberOps.html">
         <h3>Three-Number Operations</h3>
@@ -96,6 +154,9 @@
 
   <footer>Compiled by KianoRoku18Ino</footer>
 
+  <!-- this page only needs common.js for the music toggle — none of
+     the actual task logic lives here, since this page isn't a task
+     itself -->
   <script src="common.js"></script>
 </body>
 </html>

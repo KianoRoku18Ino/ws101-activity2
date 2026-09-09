@@ -1,9 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  260003GalaridoOddEven.html
+  WS101 Activity 2, Item B — Odd or Even Checker.
+  Karl Ian Ranay Galarido | BSIT-1D | Quezon City University
+
+  The smallest of my four pages — one input, one check. Item B of the
+  activity, its own file for the same reason as the others. Logic is
+  in 260003GalaridoOddEven.js.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Odd or Even Checker — WS101 Activity 2</title>
+  <meta name="description" content="Checks whether an input integer is odd or even — WS101 Activity 2, Item B.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,6 +55,9 @@
       <h2 id="oddeven-heading">Odd or Even Checker</h2>
       <p class="goal">Goal: classify a whole number using the modulo (remainder) operator.</p>
 
+      <!-- step="1" restricts the number spinner to whole numbers —
+         doesn't stop someone from typing a decimal manually, so my JS
+         still checks for that itself before answering -->
       <div class="field">
         <label for="oddEvenInput">Number to check</label>
         <input type="number" id="oddEvenInput" step="1">

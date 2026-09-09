@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  260003GalaridoCalculator.html
+  WS101 Activity 2, Item 2 — Simple Calculator.
+  Karl Ian Ranay Galarido | BSIT-1D | Quezon City University
+
+  Item 2 of the activity — the brief showed an actual mockup for this
+  one (first number, second number, operator dropdown, Calculate and
+  Reset), so I matched that layout directly instead of designing my
+  own from scratch. Logic is in 260003GalaridoCalculator.js.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Calculator — WS101 Activity 2</title>
+  <meta name="description" content="A basic four-function calculator — WS101 Activity 2, Item 2.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -54,6 +65,9 @@
         <input type="number" id="calcSecond" step="any">
       </div>
       <div class="field">
+        <!-- each option's value is the literal operator symbol my JS
+           reads directly — I don't need a separate lookup table just
+           to turn a menu choice into an operator -->
         <label for="calcOperator">Choose an operator:</label>
         <select id="calcOperator">
           <option value="+">+</option>

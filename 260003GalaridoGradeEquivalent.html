@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  260003GalaridoGradeEquivalent.html
+  WS101 Activity 2, Item C — Grade Equivalent Lookup.
+  Karl Ian Ranay Galarido | BSIT-1D | Quezon City University
+
+  Item C of the activity. This is the one page that actually needs the
+  grading-scale table to make sense, so I kept a copy of it here too,
+  not just on the hub page. Lookup logic is in
+  260003GalaridoGradeEquivalent.js.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grade Equivalent Lookup — WS101 Activity 2</title>
+  <meta name="description" content="Looks up numerical grade, rating, and remarks for a percentage score — WS101 Activity 2, Item C.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -42,6 +53,10 @@
 
   <main>
 
+    <!-- same reference table as my hub page, typed in the same way —
+       I duplicated it here on purpose instead of only linking back to
+       Home, since this is the one page where it's actually doing
+       work, not just sitting there for context -->
     <section class="reference-card" aria-labelledby="reference-heading">
       <h2 id="reference-heading">Reference — Grading Scale</h2>
       <p class="goal">Transcribed exactly as provided in the activity brief. The lookup below is built directly on this table.</p>
@@ -77,6 +92,9 @@
       <h2 id="grade-heading">Grade Equivalent Lookup</h2>
       <p class="goal">Goal: match a percentage score against the table above and return its grade, rating, and remarks.</p>
 
+      <!-- min/max keep the number spinner between 0 and 100, but I
+         still check the range myself in JS since a typed value can
+         ignore those attributes entirely -->
       <div class="field">
         <label for="gradeInput">Final percentage score (0–100)</label>
         <input type="number" id="gradeInput" min="0" max="100" step="0.01">
@@ -88,6 +106,10 @@
 
       <div class="result" id="gradeResult" aria-live="polite"></div>
 
+      <!-- I noticed the brief's table has an "INC" row that isn't a
+         percentage range at all — it's for a missing score. My lookup
+         can't reach it from a number input, so instead of quietly
+         dropping it I'm explaining that choice here -->
       <p class="assumption">
         The reference table's "Passing level: INC — Incomplete — Conditional" row covers
         a missing score rather than a percentage band, so it isn't reachable from this

@@ -1,14 +1,20 @@
 /* ============================================================
    260003GalaridoGradeEquivalent.js
-   Looks up numerical grade, descriptive rating, and remarks for a
-   percentage score, against the table transcribed from the brief.
+   WS101 Activity 2, Item C | Karl Ian Ranay Galarido
+
+   I typed the brief's grading table in as an array of objects instead
+   of writing ten separate if/else-if branches — it's the same
+   information, but this way the table on the page and the table in my
+   code are shaped the same way, so it's easy to check one against the
+   other by eye.
    ============================================================ */
 
 /**
  * GRADE_TABLE
- * Each row's `min` is the lower bound (inclusive) of that percentage
- * band, ordered highest-to-lowest so Array.find() below can stop at
- * the first row a given score still qualifies for.
+ * Every row's `min` is the lowest score that row still counts for. I
+ * ordered this highest-to-lowest on purpose, since that's what lets
+ * getGradeEquivalent() below just grab the first match instead of
+ * needing to search the whole array.
  */
 const GRADE_TABLE = [
   { min: 96.50, grade: 1.00, rating: "Excellent", remarks: "Passed" },
@@ -22,14 +28,17 @@ const GRADE_TABLE = [
   { min: 64.50, grade: 3.00, rating: "Fair", remarks: "Passed" },
   { min: -Infinity, grade: 5.00, rating: "Poor", remarks: "Failed" },
 ];
-// The brief's table also lists a "Passing level: INC — Incomplete —
-// Conditional" row (shown in the reference table on this page). That
-// covers a missing score, not a percentage band, so it isn't reachable
-// from a percentage input and is intentionally left out of this array.
+// I left the brief's "Passing level: INC — Incomplete — Conditional"
+// row out of this array on purpose. Every other row is a percentage
+// band; that one covers a missing score instead, so there's no actual
+// number that would ever match it here. I still show it on the page
+// itself (in the visible reference table), just not in this lookup.
 
 /**
  * getGradeEquivalent
- * Finds the first GRADE_TABLE row whose min threshold the score meets.
+ * Walks my table top to bottom and grabs the first row a score still
+ * qualifies for. Because the table is sorted highest-first, the first
+ * match I hit is always the right one.
  * @param {number} score - final percentage score, 0-100
  * @returns {{min: number, grade: number, rating: string, remarks: string}}
  */
@@ -39,8 +48,8 @@ function getGradeEquivalent(score) {
 
 /**
  * handleGradeLookup
- * Reads the input, validates it's a 0-100 percentage, and displays
- * the matching numerical grade, rating, and remarks.
+ * Reads my score input, checks it's actually a valid percentage, and
+ * writes the matching grade/rating/remarks onto the page.
  * @param {void}
  * @returns {void}
  */

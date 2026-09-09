@@ -1,11 +1,17 @@
 /* ============================================================
    260003GalaridoCalculator.js
-   Basic four-function calculator.
+   WS101 Activity 2, Item 2 | Karl Ian Ranay Galarido
+
+   My four-function calculator, matching the mockup the brief actually
+   showed. calculate() only does math; handleCalculate() and
+   handleReset() are the only two functions that touch the page.
    ============================================================ */
 
 /**
  * calculate
- * Applies the chosen operator to two numbers.
+ * Runs whichever operator the dropdown is set to. I used a switch
+ * here instead of if/else-if because every branch is testing the same
+ * one value (operator) — that's exactly the case switch is built for.
  * @param {number} first - first operand
  * @param {number} second - second operand
  * @param {string} operator - one of "+", "-", "*", "/"
@@ -18,6 +24,9 @@ function calculate(first, second, operator) {
     case "-": return first - second;
     case "*": return first * second;
     case "/":
+      // dividing by zero has no real numeric answer, so I check for
+      // it explicitly instead of letting JS silently hand back
+      // Infinity or NaN
       if (second === 0) return "Undefined (division by zero)";
       return first / second;
     default:
@@ -27,8 +36,8 @@ function calculate(first, second, operator) {
 
 /**
  * handleCalculate
- * Reads both inputs and the operator dropdown, validates them, and
- * writes the result into the Result line.
+ * Reads both number fields and the operator dropdown, makes sure both
+ * numbers actually parsed, and writes the result onto the page.
  * @param {void}
  * @returns {void}
  */
@@ -48,8 +57,8 @@ function handleCalculate() {
 
 /**
  * handleReset
- * Clears both inputs, resets the operator to its default, and empties
- * the result line.
+ * Clears both fields, puts the operator dropdown back to its first
+ * option, and empties the result line — my Reset button's whole job.
  * @param {void}
  * @returns {void}
  */
