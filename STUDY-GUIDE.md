@@ -2,7 +2,7 @@
 
 Every HTML tag, CSS feature, and JavaScript concept actually used across this project's
 five pages (`index.html` plus the four task pages, their shared
-`260003GalaridoActivity2Style.css`, `common.js`, and each page's own `.js`), organized by
+`260003GalaridoActivity2Style.css`, and each page's own `.js`), organized by
 what it does and where it shows up. This is a reference for the code as it exists right
 now — not a general language reference (see the `html-css-js-mastery-reference` project
 for that).
@@ -88,8 +88,10 @@ field, and a screen reader announces the label when the field receives focus.
 
 ### Functions
 - Every function is declared with `function name(...) { }` (not an arrow function
-  assigned to a `const`) and documented with a comment block above it stating its
-  purpose, parameters, and return value — the project's stated code-quality convention.
+  assigned to a `const`) and documented with a plain comment above it explaining its
+  purpose in my own words — I dropped the formal `@param`/`@returns` tag format since
+  that's a documentation convention we were never taught, and the prose explanation
+  says the same thing in a way I can actually defend if asked about it.
 - **Pure vs. handler functions** — `computeThreeNumberOps`, `isEvenNumber`,
   `getGradeEquivalent`, and `calculate` only take inputs and return outputs; they never
   touch the DOM. The `handle*` functions are the only ones that read `document.getElementById`
@@ -123,18 +125,6 @@ field, and a screen reader announces the label when the field receives focus.
 - **`Number.isInteger()`** — the odd/even check rejects decimal input, since "odd or
   even" isn't defined for non-whole numbers.
 
-### The `<audio>` element & playback control
-- `<audio id="bgMusic" src="..." loop preload="none">` — no `autoplay` attribute, so the
-  track never starts on its own; `preload="none"` also skips downloading the file until
-  playback is actually requested.
-- **`audio.play()` / `audio.pause()`** — called from the music-toggle button's click
-  handler. Browsers block unrequested autoplay, but a real click is "user interaction,"
-  which is what allows `.play()` to succeed here.
-- **`.catch()` on `audio.play()`** — `play()` returns a Promise that rejects if playback
-  fails (e.g. no audio file present yet); the empty `.catch()` swallows that error
-  quietly instead of throwing it to the console, so a missing file doesn't break the
-  rest of the page.
-
 ## 7. CSS Features Used
 
 - **CSS custom properties (`--qcu-navy`, `--qcu-gold`)** — defined once on `:root`, reused
@@ -146,8 +136,6 @@ field, and a screen reader announces the label when the field receives focus.
 - **`::before` / `::-webkit-details-marker`** — replaces the browser's default disclosure
   triangle with a custom ▸/▾ character, since the default marker can't be recolored
   directly.
-- **`position: fixed`** — the music-toggle button, pinned to the viewport corner
-  regardless of scroll position.
 - **`aria-live="polite"`** on every `.result` box — announces new results to screen
   readers without needing a page reload or focus change.
 

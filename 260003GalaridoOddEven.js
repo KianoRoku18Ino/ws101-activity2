@@ -11,8 +11,6 @@
  * isEvenNumber
  * My whole test for this task: dividing an even number by 2 always
  * leaves a remainder of 0, dividing an odd number never does.
- * @param {number} n - the number to test
- * @returns {boolean} true if n is even, false if odd
  */
 function isEvenNumber(n) {
   return n % 2 === 0;
@@ -22,8 +20,6 @@ function isEvenNumber(n) {
  * handleOddEvenCheck
  * Reads my one input, makes sure it's a real whole number, and
  * reports odd or even.
- * @param {void}
- * @returns {void}
  */
 function handleOddEvenCheck() {
   const n = parseFloat(document.getElementById("oddEvenInput").value);

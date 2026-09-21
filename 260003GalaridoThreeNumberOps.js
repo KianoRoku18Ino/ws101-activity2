@@ -18,10 +18,6 @@
  * decide myself how to extend it to three. I chose to chain left to
  * right, the same order I'd naturally read the expression in:
  * quotient = (a / b) / c, remainder = (a % b) % c.
- * @param {number} a - first input
- * @param {number} b - second input
- * @param {number} c - third input
- * @returns {{sum: number, product: number, quotient: number, remainder: number}}
  */
 function computeThreeNumberOps(a, b, c) {
   const sum = a + b + c;
@@ -35,8 +31,6 @@ function computeThreeNumberOps(a, b, c) {
  * handleThreeNumberOps
  * Reads my three number fields, checks that none of them are empty,
  * runs the actual math above, and writes the results into the page.
- * @param {void}
- * @returns {void}
  */
 function handleThreeNumberOps() {
   const a = parseFloat(document.getElementById("opsInputA").value);

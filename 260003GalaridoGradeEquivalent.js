@@ -39,8 +39,6 @@ const GRADE_TABLE = [
  * Walks my table top to bottom and grabs the first row a score still
  * qualifies for. Because the table is sorted highest-first, the first
  * match I hit is always the right one.
- * @param {number} score - final percentage score, 0-100
- * @returns {{min: number, grade: number, rating: string, remarks: string}}
  */
 function getGradeEquivalent(score) {
   return GRADE_TABLE.find((row) => score >= row.min);
@@ -50,8 +48,6 @@ function getGradeEquivalent(score) {
  * handleGradeLookup
  * Reads my score input, checks it's actually a valid percentage, and
  * writes the matching grade/rating/remarks onto the page.
- * @param {void}
- * @returns {void}
  */
 function handleGradeLookup() {
   const score = parseFloat(document.getElementById("gradeInput").value);

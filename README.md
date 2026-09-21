@@ -25,11 +25,6 @@ on `index.html` and again on the Grade Equivalent page, since that's the one the
 logic is actually built on. Every task page ends with a collapsible "Show the code & how
 it works" section — closed by default, click to expand.
 
-A music-toggle button in the top-right corner of every page plays/pauses
-`assets/audio/background-music.mp3` on click — off by default, nothing plays until it's
-pressed. Each page controls its own `<audio>` element independently — switching pages
-stops the music, since there's no shared player across page loads on a plain static site.
-
 See `STUDY-GUIDE.md` for a full tag-by-tag, concept-by-concept breakdown of everything
 used in the source, for quiz/defense review.
 
@@ -42,10 +37,7 @@ index.html                              — hub page (nav + reference table + li
 260003GalaridoGradeEquivalent.html/.js  — Task C, self-contained
 260003GalaridoCalculator.html/.js       — Task 2, self-contained
 260003GalaridoActivity2Style.css        — shared stylesheet (letterhead, nav, cards, all five pages)
-common.js                               — shared script (music toggle only — every page's own
-                                           math/logic lives in that page's own .js file)
 assets/images/                          — QCU and CCS seals used in the letterhead
-assets/audio/background-music.mp3       — background track (toggle, off by default)
 STUDY-GUIDE.md                          — tag/concept-by-concept breakdown for review
 ```
 

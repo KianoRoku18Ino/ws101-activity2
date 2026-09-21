@@ -12,10 +12,6 @@
  * Runs whichever operator the dropdown is set to. I used a switch
  * here instead of if/else-if because every branch is testing the same
  * one value (operator) — that's exactly the case switch is built for.
- * @param {number} first - first operand
- * @param {number} second - second operand
- * @param {string} operator - one of "+", "-", "*", "/"
- * @returns {number|string} the numeric result, or an error string
  *   (e.g. for division by zero)
  */
 function calculate(first, second, operator) {
@@ -38,8 +34,6 @@ function calculate(first, second, operator) {
  * handleCalculate
  * Reads both number fields and the operator dropdown, makes sure both
  * numbers actually parsed, and writes the result onto the page.
- * @param {void}
- * @returns {void}
  */
 function handleCalculate() {
   const first = parseFloat(document.getElementById("calcFirst").value);
@@ -59,8 +53,6 @@ function handleCalculate() {
  * handleReset
  * Clears both fields, puts the operator dropdown back to its first
  * option, and empties the result line — my Reset button's whole job.
- * @param {void}
- * @returns {void}
  */
 function handleReset() {
   document.getElementById("calcFirst").value = "";

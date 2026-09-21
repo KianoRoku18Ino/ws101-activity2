@@ -378,36 +378,7 @@ button {
   margin: 0;
 }
 
-/* 12. MUSIC TOGGLE
-   Pinned to the same corner on every page. It starts "off" because
-   the <audio> element it controls has no autoplay attribute — nothing
-   plays until a real click happens, which is also what satisfies
-   browsers' autoplay-blocking rules in the first place. */
-.music-toggle {
-  position: fixed; /* stays in the corner even while the page scrolls, instead of scrolling away with the content */
-  top: 16px;
-  right: 16px;
-  z-index: 10; /* keeps it above the letterhead and cards instead of getting tucked behind them */
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--qcu-navy);
-  color: #ffffff;
-  border-radius: 999px; /* a large enough radius always renders as a full pill regardless of the button's exact width */
-  padding: 8px 14px;
-  font-size: 0.8rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.music-toggle:hover {
-  background: #002a80;
-}
-
-.music-toggle .music-icon {
-  font-size: 0.95rem;
-}
-
-/* 13. REFERENCE TABLE
+/* 12. REFERENCE TABLE
    The grading-scale table, typed in exactly as it appears in the
    activity brief. It shows up on my hub page and again on the Grade
    Equivalent page specifically, since that's the one page whose logic
@@ -485,7 +456,7 @@ button {
   color: #64748b;
 }
 
-/* 14. HUB LINK CARDS
+/* 13. HUB LINK CARDS
    Four link-cards on index.html pointing at my four separate task
    pages. Since the instructor asked for separate files instead of one
    combined page, index.html stopped being a leftover GitHub-Pages
@@ -526,7 +497,7 @@ button {
   color: #64748b;
 }
 
-/* 15. FOOTER */
+/* 14. FOOTER */
 footer {
   max-width: 480px;
   margin: 40px auto 0;
@@ -535,7 +506,7 @@ footer {
   color: #94a3b8;
 }
 
-/* 16. NARROW-SCREEN ADJUSTMENTS
+/* 15. NARROW-SCREEN ADJUSTMENTS
    This is the other half of the mobile-overflow fix from section 13 —
    on top of the table scrolling inside its own box, I also tighten up
    the padding around it (and everything else) below 480px, so more of

@@ -32,14 +32,6 @@
 </head>
 <body>
 
-  <!-- ===== MUSIC TOGGLE — off by default, since I didn't add an
-     autoplay attribute below. Clicking this is what actually starts
-     the track; see common.js for the function that runs on click. ===== -->
-  <button type="button" id="musicToggle" class="music-toggle" aria-pressed="false">
-    <span class="music-icon">🔈</span><span class="music-label">Music</span>
-  </button>
-  <audio id="bgMusic" src="assets/audio/background-music.mp3" loop preload="none"></audio>
-
   <!-- ===== LETTERHEAD — my stand-in for the QCU letterhead at the
      top of the actual brief PDF: seal, university name, college,
      activity title, second seal. Same real seal image files I used
@@ -154,9 +146,5 @@
 
   <footer>Compiled by KianoRoku18Ino</footer>
 
-  <!-- this page only needs common.js for the music toggle — none of
-     the actual task logic lives here, since this page isn't a task
-     itself -->
-  <script src="common.js"></script>
 </body>
 </html>
